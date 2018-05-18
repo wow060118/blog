@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.conf.urls import url,include
+from django.conf.urls import url, include
 
 urlpatterns = [
     url('', include('myblog.urls')),
+    url('', include('comments.urls')),
     path('admin/', admin.site.urls),
 ]

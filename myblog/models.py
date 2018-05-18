@@ -41,5 +41,8 @@ class Post(models.Model):
     # 作者
     author = models.ForeignKey(User,on_delete=models.CASCADE)
 
+    class Meta:
+        ordering = ['-created_time']
+
     def __str__(self):
         return self.title

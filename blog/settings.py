@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
@@ -27,10 +26,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
+    'comments.apps.CommentsConfig',
     'myblog.apps.MyblogConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -65,27 +64,28 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'libraries':{
+                        'myblog_tags': 'myblog.templatetags.myblog_tags',
+                        }
         },
     },
 ]
 
 WSGI_APPLICATION = 'blog.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
-        'default': {
+    'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'blog',  # 数据库名称
-        'HOST':'127.0.0.1',  # 主机地址
-        'PORT':'3306',  # 端口号
-        'USER':'root',  # 用户名
-        'PASSWORD':'root',  # 密码
+        'HOST': '127.0.0.1',  # 主机地址
+        'PORT': '3306',  # 端口号
+        'USER': 'root',  # 用户名
+        'PASSWORD': 'root',  # 密码
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -105,7 +105,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
@@ -117,8 +116,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
-
+USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
