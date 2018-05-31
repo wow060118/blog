@@ -3,6 +3,7 @@ from .models import Category, Post, Tag
 from comments.forms import CommentForm
 from django.views.generic.list import ListView
 from django.http import HttpResponse
+from django.contrib.auth.models import User
 import markdown
 from django.core import serializers
 
@@ -64,3 +65,16 @@ def category(request, pk):
     cate = get_object_or_404(Category, pk=pk)
     post_list = Post.objects.filter(category=cate).order_by('-created_time')
     return render(request, 'myblog/index.html', context={"post_list": post_list})
+
+
+def createPost(request):
+    cate = request.POST['category']
+    print(cate)
+    category = Category.objects.create(name=cate)
+    post = Post()
+    post.title = request.POST['title']
+    post.excerpt = request.POST['excerpt']
+    post.body = request.POST['body']
+    post.author = User.objects.filter(pk=1)
+    post.category = category
+    post.save()

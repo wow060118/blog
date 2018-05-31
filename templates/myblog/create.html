@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block main %}
+        <hr>
+        <h3>创建文章</h3>
+        <form action="{% url 'comments:post_comment' postDetail.pk %}" method="post" class="comment-form">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="category">category:</label>
+                    <input type="text" class="form-control" id="category" name="category" placeholder="category">
+                </div>
+                <div class="col-md-4">
+                    <label for="title">title:</label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="title">
+                </div>
+                <div>
+                    <label for="excerpt">excerpt:</label>
+                    <input type="text" class="form-control" id="excerpt" name="excerpt" placeholder="excerpt">
+                </div>
+                <div class="col-md-12">
+                    <label for="body">body:</label>
+                    <textarea class="form-control" rows="3" id="body" name="body"></textarea>
+                    <button type="submit" class="btn">发表</button>
+                </div>
+            </div>    <!-- row -->
+        </form>
+{% endblock main %}

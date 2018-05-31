@@ -16,7 +16,7 @@ def post_comment(request, post_pk):
 
         if form.is_valid():
             comment = form.save(commit=False)
-
+            # 因为有外键 所以不自动提交 等关联完外键之后再提交 所以用commit= false
             comment.post = post
 
             comment.save()
@@ -24,7 +24,6 @@ def post_comment(request, post_pk):
 
         else:
             comment_list = post.comment_set.all()
-            print(serializers.serialize('json',comment_list))
             context = {'post': post,
                        'form': form,
                        'comment_list': comment_list
