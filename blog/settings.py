@@ -22,9 +22,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'x*tx(pu+o+u#s7mo8rvos@&^sg+p=8*zs)qu*h-&q-y%3-wz8@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1','localhost','studywxminiapp.top','www.studywxminiapp.top']
 
 # Application definition
 
@@ -64,9 +64,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
-            'libraries':{
-                        'myblog_tags': 'myblog.templatetags.myblog_tags',
-                        }
+            'libraries': {
+                'myblog_tags': 'myblog.templatetags.myblog_tags',
+            }
         },
     },
 ]
@@ -122,3 +122,5 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
